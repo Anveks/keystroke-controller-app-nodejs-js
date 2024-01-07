@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keystrokes Template</title>
+</head>
+<body>
+  <h1>This is keystrokes app template</h1>
+
+  <form id="keystrokesForm">
+    <label for="inputData">Data to Send:</label>
+    <input type="text" id="inputData" name="inputData">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
+
+<!-- script -->
+<script>
+   document.getElementById('keystrokesForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get the data from the input field
+      const inputData = document.getElementById('inputData').value;
+
+      // Send the data to the server using Fetch
+      fetch('/api/keystroke', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ inputData })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the server's response
+        console.log('Server response:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+</script>
