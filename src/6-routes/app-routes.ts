@@ -12,6 +12,8 @@ router.get("/keystroke", async (request: Request, response: Response, next: Next
 
 router.post("/keystroke", async (request: Request, response: Response, next: NextFunction) => {
   try {
+    console.log('this is from the post');
+   
     console.log(request.body);
     
     response.json("Gotcha!");

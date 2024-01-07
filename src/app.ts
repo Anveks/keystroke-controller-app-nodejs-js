@@ -6,6 +6,7 @@ import path from "path";
 const server = express();
 
 // setting the ejs
+server.use(express.json());
 server.set("view engine", "ejs");
 server.set("views", path.join(__dirname, "views"));
 

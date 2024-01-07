@@ -10,9 +10,13 @@
   <h1>This is keystrokes app template</h1>
 
   <form id="keystrokesForm">
-    <label for="inputData">Data to Send:</label>
-    <input type="text" id="inputData" name="inputData">
-    <button type="submit">Submit</button>
+    <label>App to Focus:</label>
+    <input type="text" class="app-input">
+
+    <label>Keystrokes:</label>
+    <input type="text" class="keystrokes-input">
+
+    <button type="submit">Send</button>
   </form>
 </body>
 </html>
@@ -21,9 +25,15 @@
 <script>
    document.getElementById('keystrokesForm').addEventListener('submit', function(e) {
       e.preventDefault();
+
+      const appInput = document.querySelector(".app-input").value();
+      const keystrokeInput = document.querySelector(".keystrokes-input").value();
       
       // Get the data from the input field
-      const inputData = document.getElementById('inputData').value;
+      const inputData = {
+        appInput,
+        keystrokeInput
+      };
 
       // Send the data to the server using Fetch
       fetch('/api/keystroke', {
